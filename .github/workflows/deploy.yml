@@ -18,6 +18,6 @@ jobs:
       with: 
         node-version: '12'
     - name: Setup Surge
-      run: npm insall --global surge
+      run: npm install --global surge
     - name: Execute Deployment with surge
       run: surge ./ project1-shahbaz.surge.sh --token ${{secrets.SURGE_TOKEN}}
