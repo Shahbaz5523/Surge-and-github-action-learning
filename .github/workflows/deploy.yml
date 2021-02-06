@@ -1,0 +1,23 @@
+name: Deploy Site on Surge
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2-beta
+      with: 
+        node-version: '12'
+    - name: Setup Surge
+      run: npm insall --global surge
+    - name: Execute Deployment with surge
+      run: surge ./ project1-shahbaz.surge.sh --token ${{secrets.SURGE_TOKEN}}
